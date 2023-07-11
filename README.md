@@ -6,4 +6,4 @@ clone both repos,
 
 open both on IDE
 
-run this repo on a cmd, use the command "npm start"
+run this repo on IDE, run client on command prompt with "npm start"
