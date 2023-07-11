@@ -42,18 +42,23 @@ public class WebSiteController {
             value = "/jugada",
             produces = "application/json"
     )
-    public String jugada(@RequestParam(value = "name", defaultValue = "-1") String val, @RequestParam(value = "jugador", defaultValue = "--") String jugador){
+    public String jugada(@RequestParam(value = "val", defaultValue = "-1") String val, @RequestParam(value = "jugador", defaultValue = "--") String jugador){
 
         String jugada = "{\"timestamp\":\"" 
                 + java.time.LocalDateTime.now() + ", "
                 + java.time.LocalTime.now() 
                 + ". " + "\","
-                + "\"rcvdmsg\":" + "\"val=" + val + "& jugador =" + jugador +"\"}";
+                + "\"val\":\"" + val + "\",\"jugador\":\"" + jugador +"\"}";
         plays.setJugada(jugada);
         return jugada;
     }
     
     
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(
+            value = "/getjugada",
+            produces = "application/json"
+    )
     public String getJugada(){
         String jugada = plays.getJugada();
         if ("".equals(jugada)){
